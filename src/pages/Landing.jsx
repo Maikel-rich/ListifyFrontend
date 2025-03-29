@@ -1,20 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import Header from "../components/Header.jsx";
 
 export default function Landing() {
+    const navigate = useNavigate();
+
     return (
-        <div className="text-[var(--white)] bg-[var(--gray-dark)] h-screen overflow-hidden flex flex-col items-center px-4">
+        <div className="text-[var(--white)] bg-[var(--gray-dark)] h-screen flex flex-col items-center px-4">
             {/* Header */}
-            <header className="text-[var(--white)] flex items-center justify-center gap-4 mt-10">
-                <motion.img
-                    className="h-[48px] md:h-[56px]"
-                    src="/ListifyLogo.svg"
-                    alt="Listify Logo"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                />
-                <h1 className="text-3xl md:text-4xl font-black tracking-wide">Listify</h1>
-            </header>
+            <Header />
 
             {/* Main */}
             <motion.main
@@ -33,10 +27,11 @@ export default function Landing() {
                 <motion.button
                     className="rounded-full bg-[var(--primary)] text-base md:text-lg px-6 md:px-8 py-2
                     hover:bg-[var(--gray-light)] hover:text-[var(--black)] hover:shadow-lg drop-shadow-md
-                    transition-transform duration-300 ease-in-out w-full max-w-[220px] md:max-w-[250px]"
+                    transition-transform duration-40 ease-in-out w-full max-w-[220px] md:max-w-[250px]"
                     aria-label="Explorar Listify"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => navigate("/login")}
                 >
                     Explorar
                 </motion.button>
@@ -52,8 +47,8 @@ export default function Landing() {
             >
                 {[
                     { title: "Listas personalizadas", text: "Crea y edita listas adaptadas a tus necesidades." },
-                    { title: "Organización inteligente", text: "Agrupa productos en categorías." },
-                    { title: "Compartir con facilidad", text: "Envía tus listas a familiares o amigos en segundos." }
+                    { title: "Compartir con facilidad", text: "Envía tus listas a familiares o amigos en segundos." },
+                    { title: "Organización inteligente", text: "Agrupa productos en categorías." }
                 ].map((feature, index) => (
                     <motion.div
                         key={index}
