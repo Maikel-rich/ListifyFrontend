@@ -7,8 +7,10 @@
   --white: #F8F9FA;
   --gray-light: #CBD5E1;
   --primary: #1F9E92;
+  --neutral: #313b45;
 }
 
 html {
   font-family: "Red Hat Display", sans-serif;
+  background: var(--gray-dark);
 }
