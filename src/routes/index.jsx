@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from "../pages/Landing.jsx";
 import Login from "../pages/Login.jsx";
+import Register from "../pages/Register.jsx";
 import DashboardLayout from "../layouts/DashboardLayout";
 import DashboardHome from "../pages/Dashboard/DashboardHome";
 import Products from "../pages/Dashboard/DashboardProducts.jsx";
@@ -11,6 +12,7 @@ const AppRoutes = () => {
         <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<DashboardLayout />}>
                 <Route index element={<DashboardHome />} />
                 <Route path="products" element={<Products />} />
