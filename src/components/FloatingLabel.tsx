@@ -12,14 +12,14 @@ interface FloatingLabelProps {
 }
 
 export default function FloatingLabel({
-                                          label,
-                                          isPassword = false,
-                                          isDate = false,
-                                          labelBgColor = "bg-[var(--gray-dark)]",
-                                          value = "",
-                                          onChange,
-                                          name
-                                      }: FloatingLabelProps) {
+    label,
+    isPassword = false,
+    isDate = false,
+    labelBgColor = "bg-[var(--gray-dark)]",
+    value = "",
+    onChange,
+    name
+}: FloatingLabelProps) {
     const [showPassword, setShowPassword] = useState(false);
     const hasContent = value.length > 0;
 

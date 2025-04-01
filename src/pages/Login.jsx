@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Header from "../components/Header.jsx";
-import FloatingLabel from "../components/FloatingLabel.js";
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import Header from "../components/Header";
+import FloatingLabel from "../components/FloatingLabel";
 import { useToast } from "@/components/Toast";
 import { login } from "@/services/auth.service";
 
@@ -15,7 +15,7 @@ export default function Login() {
     });
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
@@ -23,24 +23,25 @@ export default function Login() {
         }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
 
         try {
-            // Validación básica
+            // Basic validation
             if (!formData.username || !formData.password) {
-                showToast("Por favor complete todos los campos");
+                showToast("Please fill in all fields");
                 return;
             }
 
-            // Llamada al servicio de autenticación
-            await login(formData.username, formData.password);
-
-            showToast("Inicio de sesión exitoso");
+            // Authentication service call
+            const data = await login(formData.username, formData.password);
+            localStorage.setItem("token", data.token);
+            
+            showToast("Login successful");
             setTimeout(() => navigate("/dashboard"), 1500);
         } catch (error) {
-            showToast(error.message || "Error al iniciar sesión");
+            showToast(error instanceof Error ? error.message : "Login failed");
         } finally {
             setIsLoading(false);
         }
@@ -73,14 +74,14 @@ export default function Login() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        ¡Bienvenido de nuevo!
+                        Welcome back!
                     </motion.h1>
 
                     <form onSubmit={handleSubmit}>
                         <div className="flex flex-col gap-6 mt-6">
                             <FloatingLabel
                                 labelBgColor="var(--neutral)"
-                                label="Usuario"
+                                label="Username"
                                 name="username"
                                 value={formData.username}
                                 onChange={handleInputChange}
@@ -88,7 +89,7 @@ export default function Login() {
                             <FloatingLabel
                                 labelBgColor="var(--neutral)"
                                 isPassword={true}
-                                label="Contraseña"
+                                label="Password"
                                 name="password"
                                 value={formData.password}
                                 onChange={handleInputChange}
@@ -105,7 +106,7 @@ export default function Login() {
                             {isLoading ? (
                                 <span className="loading loading-spinner"></span>
                             ) : (
-                                "Iniciar Sesión"
+                                "Sign In"
                             )}
                         </motion.button>
                     </form>
@@ -120,13 +121,13 @@ export default function Login() {
                             onClick={() => navigate("/forgot-password")}
                             className="cursor-pointer text-white hover:text-[var(--primary)]"
                         >
-                            Recuperar contraseña
+                            Forgot password?
                         </a>
                         <a
                             onClick={() => navigate("/register")}
                             className="cursor-pointer text-white hover:text-[var(--primary)]"
                         >
-                            Registrarse
+                            Create account
                         </a>
                     </motion.div>
                 </motion.div>
