@@ -14,3 +14,7 @@ html {
   font-family: "Red Hat Display", sans-serif;
   background: var(--gray-dark);
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
