@@ -10,6 +10,6 @@ export interface Product {
     supermarketId?: number; // Relación opcional
     userId: number; // Relación obligatoria
     isFavorite?: boolean;
-    category?: Category; // Opcional para joins
-    supermarket?: Supermarket; // Opcional para joins
+    supermarket?: Supermarket | null;
+    category?: Category | null;
 }
