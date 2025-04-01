@@ -7,6 +7,70 @@
   --white: #F8F9FA;
   --gray-light: #CBD5E1;
   --primary: #1F9E92;
+  --primary-hover: #167166;
+  --neutral: #313b45;
+}
+
+html {
+  font-family: "Red Hat Display", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--gray-dark);
+  color: var(--white);
+  scroll-behavior: smooth;
+}
+
+/* Personalización de scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-light);
+  border-radius: 10px;
+}
+
+/* Estilos base personalizados */
+@layer base {
+  body {
+    @apply bg-[var(--gray-dark)] text-[var(--white)];
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  button, .btn {
+    @apply transition-all duration-200 transform hover:scale-105 active:scale-95;
+  }
+}
+
+:root {
+  --black: #102A43;
+  --gray-dark: #1A2530;
+  --white: #F8F9FA;
+  --gray-light: #CBD5E1;
+  --primary: #1F9E92;
   --neutral: #313b45;
 }
 
