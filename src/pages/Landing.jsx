@@ -6,7 +6,7 @@ export default function Landing() {
     const navigate = useNavigate();
 
     return (
-        <div className="text-[var(--white)] bg-[var(--gray-dark)] h-screen flex flex-col items-center px-4">
+        <div className="text-[var(--white)] bg-[var(--gray-dark)] h-screen flex flex-col items-center px-4 mt-14">
             {/* Header */}
             <Header />
 

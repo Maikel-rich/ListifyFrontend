@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function Header() {
     return(
-        <header className="text-[var(--white)] flex items-center justify-center gap-4 mt-10">
+        <header className="text-[var(--white)] flex items-center justify-center gap-4">
             <motion.img
                 className="h-[48px] md:h-[56px]"
                 src="/ListifyLogo.svg"

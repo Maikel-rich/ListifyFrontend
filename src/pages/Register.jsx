@@ -13,7 +13,7 @@ export default function Register() {
 
     return (
         <motion.div
-            className="text-[var(--white)] h-screen flex flex-col items-center px-4 bg-[var(--background)]"
+            className="text-[var(--white)] mt-20 h-screen flex flex-col items-center px-4 bg-[var(--background)]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -65,10 +65,10 @@ export default function Register() {
                     {step === 2 && (
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
                             <div className="flex flex-col gap-6 mt-6">
-                                <FloatingLabel label="Usuario" />
-                                <FloatingLabel label="Correo electrónico" type="email" />
-                                <FloatingLabel isPassword={true} label="Contraseña" />
-                                <FloatingLabel isPassword={true} label="Confirmar contraseña" />
+                                <FloatingLabel labelBgColor="var(--neutral)" label="Usuario" />
+                                <FloatingLabel labelBgColor="var(--neutral)" label="Correo electrónico" type="email" />
+                                <FloatingLabel labelBgColor="var(--neutral)" isPassword={true} label="Contraseña" />
+                                <FloatingLabel labelBgColor="var(--neutral)" isPassword={true} label="Confirmar contraseña" />
                             </div>
                             <div className="flex justify-between mt-6 gap-4">
                                 <motion.button
@@ -83,7 +83,7 @@ export default function Register() {
                                     className="bg-[var(--primary)] rounded-full py-2 px-6 text-[var(--white)] shadow-lg hover:shadow-xl transition-all duration-300"
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    onClick={() => navigate("/dashboard")}
+                                    onClick={() => navigate("/login")}
                                 >
                                     Registrarse
                                 </motion.button>
