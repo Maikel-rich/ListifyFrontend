@@ -15,7 +15,7 @@ export default function Login() {
     });
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
@@ -23,25 +23,25 @@ export default function Login() {
         }));
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
 
         try {
-            // Basic validation
+            // Validación básica
             if (!formData.username || !formData.password) {
-                showToast("Please fill in all fields");
+                showToast("Rellena todos los campos");
                 return;
             }
 
-            // Authentication service call
+            // Llamada al servicio de autenticación
             const data = await login(formData.username, formData.password);
             localStorage.setItem("token", data.token);
-            
-            showToast("Login successful");
+
+            showToast("Iniciando sesión");
             setTimeout(() => navigate("/dashboard"), 1500);
         } catch (error) {
-            showToast(error instanceof Error ? error.message : "Login failed");
+            showToast(error instanceof Error ? error.message : "Inicio fallido");
         } finally {
             setIsLoading(false);
         }
@@ -49,7 +49,7 @@ export default function Login() {
 
     return (
         <motion.div
-            className="text-[var(--white)] h-screen flex flex-col items-center px-4 bg-[var(--background)] mt-20"
+            className="text-[var(--white)] h-screen flex flex-col items-center px-4 bg-[var(--background)] pt-20"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -69,19 +69,19 @@ export default function Login() {
                     transition={{ duration: 0.6, ease: "easeInOut" }}
                 >
                     <motion.h1
-                        className="font-semibold text-4xl text-center text-white drop-shadow-lg mb-6"
+                        className="font-semibold text-4xl text-center text-[var(--white)] drop-shadow-lg mb-6"
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        Welcome back!
+                        Inicia sesión
                     </motion.h1>
 
                     <form onSubmit={handleSubmit}>
                         <div className="flex flex-col gap-6 mt-6">
                             <FloatingLabel
                                 labelBgColor="var(--neutral)"
-                                label="Username"
+                                label="Usuario"
                                 name="username"
                                 value={formData.username}
                                 onChange={handleInputChange}
@@ -89,7 +89,7 @@ export default function Login() {
                             <FloatingLabel
                                 labelBgColor="var(--neutral)"
                                 isPassword={true}
-                                label="Password"
+                                label="Contraseña"
                                 name="password"
                                 value={formData.password}
                                 onChange={handleInputChange}
@@ -106,7 +106,7 @@ export default function Login() {
                             {isLoading ? (
                                 <span className="loading loading-spinner"></span>
                             ) : (
-                                "Sign In"
+                                "Iniciar sesión"
                             )}
                         </motion.button>
                     </form>
@@ -119,15 +119,15 @@ export default function Login() {
                     >
                         <a
                             onClick={() => navigate("/forgot-password")}
-                            className="cursor-pointer text-white hover:text-[var(--primary)]"
+                            className="cursor-pointer text-[var(--white)] hover:text-[var(--primary)]"
                         >
-                            Forgot password?
+                            Recuperar contraseña
                         </a>
                         <a
                             onClick={() => navigate("/register")}
-                            className="cursor-pointer text-white hover:text-[var(--primary)]"
+                            className="cursor-pointer text-[var(--white)] hover:text-[var(--primary)]"
                         >
-                            Create account
+                            Crear cuenta
                         </a>
                     </motion.div>
                 </motion.div>

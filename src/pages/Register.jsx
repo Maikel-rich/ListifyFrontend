@@ -13,7 +13,7 @@ export default function Register() {
 
     return (
         <motion.div
-            className="text-[var(--white)] mt-20 h-screen flex flex-col items-center px-4 bg-[var(--background)]"
+            className="text-[var(--white)] pt-20 h-screen flex flex-col items-center px-4 bg-[var(--background)]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
