@@ -6,13 +6,12 @@ export default function Landing() {
     const navigate = useNavigate();
 
     return (
-        <div className="text-[var(--white)] bg-[var(--gray-dark)] h-screen flex flex-col items-center px-4 mt-14">
+        <div className="text-[var(--white)] bg-[var(--gray-dark)] flex flex-col items-center px-4 mt-10">
             {/* Header */}
             <Header />
-
             {/* Main */}
             <motion.main
-                className="h-max flex flex-col items-center text-center max-w-[800px] mx-auto py-16 md:py-24 gap-6"
+                className="h-max flex flex-col items-center text-center max-w-[800px] mx-auto py-16 gap-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}

@@ -1,5 +1,4 @@
-import { User } from "../models/user.model";
-import { Client } from "../models/client.model";
+import { User } from "@/models/user.model";
 
 const API_URL = "http://127.0.0.1:8000/api/auth";
 
@@ -44,11 +43,6 @@ export const login = async (username: string, password: string): Promise<LoginRe
         console.log('Response status:', response.status);
         const data: LoginResponse = await response.json();
         console.log('Response data:', data);
-
-        if (!response.ok) {
-            console.error('Error response:', data);
-            throw new Error(data.message || "Login failed");
-        }
 
         if (!data.token) {
             console.error('Missing token in response');

@@ -4,6 +4,7 @@ import ProductCard from "../../components/ProductCard";
 import { useToast } from "@/components/Toast";
 import { ProductService } from "@/services/product.service";
 import { jwtDecode } from 'jwt-decode';
+import LoadingProductCard from "@/components/LoadingProductCard.js";
 
 export default function DashboardHome() {
     const [username, setUsername] = useState('Usuario');
@@ -95,7 +96,7 @@ export default function DashboardHome() {
 
             <div className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-6">
                 <div className="mb-6 md:mb-0">
-                    <h2 className="text-[var(--white)] text-2xl mb-4">Mis listas</h2>
+                    <h2 className="text-[var(--white)] font-semibold text-2xl mb-4">Mis listas</h2>
                     <div className="bg-[var(--gray-light)] rounded-xl shadow-md p-4 h-auto md:max-h-[320px] overflow-y-auto scrollbar-hide">
                         {loading.lists ? (
                             <div className="space-y-4">
@@ -135,12 +136,10 @@ export default function DashboardHome() {
                 </div>
 
                 <div className="mb-24 md:mb-0">
-                    <h2 className="text-[var(--white)] text-2xl mb-4">Últimos productos</h2>
+                    <h2 className="text-[var(--white)] font-semibold text-2xl mb-4">Últimos productos</h2>
                     <div className="space-y-4 h-auto md:max-h-[320px] overflow-x-hidden overflow-y-auto pr-2">
                         {loading.products ? (
-                            [...Array(4)].map((_, i) => (
-                                <div key={i} className="h-24 w-full rounded-xl bg-[var(--gray-dark)]/20" />
-                            ))
+                            [...Array(4)].map((_, i) => <LoadingProductCard key={i} />)
                         ) : products.length === 0 ? (
                             <p className="text-[var(--white)] mt-4 font-bold text-center py-8">No tienes productos añadidos</p>
                         ) : (
