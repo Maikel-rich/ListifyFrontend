@@ -1,7 +1,6 @@
-// product.service.ts
-import { Product } from "../models/product.model";
-import { Category } from "../models/category.model";
-import { Supermarket } from "../models/supermarket.model";
+import { Product } from "@/models/product.model";
+import { Category } from "@/models/category.model";
+import { Supermarket } from "@/models/supermarket.model";
 
 const API_URL = "http://localhost:8000/api/product";
 
@@ -9,7 +8,7 @@ const API_URL = "http://localhost:8000/api/product";
 const getAuthHeaders = () => {
     const token = localStorage.getItem("token");
     if (!token) {
-        throw new Error("No authentication token found");
+        throw new Error("No encontrado el token");
     }
     return {
         "Content-Type": "application/json",
@@ -18,7 +17,7 @@ const getAuthHeaders = () => {
 };
 
 export const ProductService = {
-    // Create a new product
+    // Crear nuevo producto
     async createProduct(productData: {
         name: string;
         description?: string;
@@ -41,17 +40,17 @@ export const ProductService = {
 
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.message || "Failed to create product");
+                throw new Error(errorData.message || "Error al crear producto");
             }
 
             return await response.json();
         } catch (error) {
-            console.error("Error creating product:", error);
+            console.error("Error creando el producto:", error);
             throw error;
         }
     },
 
-    // Update an existing product
+    // Editar un producto existente
     async updateProduct(
         id: number,
         productData: {
@@ -77,17 +76,17 @@ export const ProductService = {
 
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.message || "Failed to update product");
+                throw new Error(errorData.message || "Error actualizando producto");
             }
 
             return await response.json();
         } catch (error) {
-            console.error("Error updating product:", error);
+            console.error("Error actualizando producto:", error);
             throw error;
         }
     },
 
-    // Delete a product
+    // Borrar un producto
     async deleteProduct(id: number): Promise<void> {
         try {
             const response = await fetch(`${API_URL}/delete/${id}`, {
@@ -97,15 +96,15 @@ export const ProductService = {
 
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.message || "Failed to delete product");
+                throw new Error(errorData.message || "Error borrando producto");
             }
         } catch (error) {
-            console.error("Error deleting product:", error);
+            console.error("Error borrando producto:", error);
             throw error;
         }
     },
 
-    // Get all products for the current user
+    // Obtener todos los productos del usuario
     async getUserProducts(): Promise<Product[]> {
         try {
             const response = await fetch(`${API_URL}/user`, {
@@ -115,12 +114,12 @@ export const ProductService = {
 
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.message || "Failed to fetch user products");
+                throw new Error(errorData.message || "Error obteniendo productos");
             }
 
             return await response.json();
         } catch (error) {
-            console.error("Error fetching user products:", error);
+            console.error("Error obteniendo productos:", error);
             throw error;
         }
     },

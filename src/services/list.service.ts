@@ -1,4 +1,4 @@
-import { ShoppingList } from "../models/shoppingList.model";
+import { ShoppingList } from "@/models/shoppingList.model";
 
 const API_URL = "http://127.0.0.1:8000/api/list";
 
