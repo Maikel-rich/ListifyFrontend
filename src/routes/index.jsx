@@ -8,6 +8,7 @@ import CreateList from "../pages/Dashboard/DashboardCreateList.jsx";
 import Products from "../pages/Dashboard/DashboardProducts.jsx";
 import ViewList from "../pages/Dashboard/DashboardViewLists.jsx";
 import ProtectedRoute from "@/components/ProtectedRoute.jsx";
+import ListDetails from "../pages/dashboard/ListDetails.jsx";
 
 const AppRoutes = () => {
     return (
@@ -22,6 +23,8 @@ const AppRoutes = () => {
                     <Route path="products" element={<Products />} />
                     <Route path="createList" element={<CreateList />} />
                     <Route path="lists" element={<ViewList />} />
+
+                    <Route path="details/:id" element={<ListDetails />} />
                 </Route>
             </Route>
 

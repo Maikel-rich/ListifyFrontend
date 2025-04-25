@@ -5,6 +5,7 @@ import { useToast } from "@/components/Toast";
 import { ProductService } from "@/services/product.service";
 import { jwtDecode } from 'jwt-decode';
 import LoadingProductCard from "@/components/LoadingProductCard.js";
+import { useNavigate } from "react-router-dom";
 
 export default function DashboardHome() {
     const [username, setUsername] = useState('Usuario');
@@ -15,6 +16,8 @@ export default function DashboardHome() {
         lists: true,
         products: true
     });
+    const navigate = useNavigate();
+
     const { showToast, ToastComponent } = useToast();
 
     const showErrorToast = useCallback((message) => {
@@ -70,6 +73,7 @@ export default function DashboardHome() {
     };
 
     const handleListClick = useCallback((list) => {
+        navigate(`/dashboard/details/${list.id}`);
         showToast(`Lista seleccionada: ${list.name}`, 3000);
     }, [showToast]);
 

@@ -15,8 +15,10 @@ export default function DashboardBar() {
             setActive("crear");
         } else if (path.includes("/dashboard/lists")) {
             setActive("listas");
-        } else {
+        } else if (path === "/dashboard") {
             setActive("home");
+        } else {
+            setActive("");
         }
     }, [location.pathname]);
 
