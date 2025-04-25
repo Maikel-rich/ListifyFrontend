@@ -37,7 +37,7 @@ export default function DashboardBar() {
                             navigate(item.path);
                         }
                     }}
-                    className={`relative text-xl font-semibold flex items-center gap-2 px-4 py-2 rounded-full transition-all flex-1 justify-center transform ${
+                    className={`relative text-xl font-semibold flex items-center gap-2 px-1 sm:px-4 py-2 rounded-full transition-all flex-1 justify-center transform ${
                         active === item.id
                             ? "bg-[var(--primary)] text-[var(--white)] shadow-xl"
                             : "text-[var(--black)] hover:scale-110 hover:shadow-2xl"
