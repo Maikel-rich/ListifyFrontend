@@ -1,4 +1,4 @@
-import { ListProduct } from './listProduct.model';
+import {Product} from "@/models/product.model";
 
 export enum ShoppingListStatus {
     IN_PROCESS= 1,
@@ -8,8 +8,14 @@ export enum ShoppingListStatus {
 export interface ShoppingList {
     id: number;
     name: string;
-    userId: number;
-    status: ShoppingListStatus;
-    updatedAt: Date;
-    products?: ListProduct[];
+    status: number;
+    updatedAt: string;
+    products: {
+        productId: number;
+        productName: string;
+        description: string;
+        price: number;
+        isFavorite: boolean | null;
+        amount: number;
+    }[];
 }

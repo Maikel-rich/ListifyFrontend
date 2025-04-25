@@ -143,14 +143,19 @@ export default function DashboardHome() {
                         ) : products.length === 0 ? (
                             <p className="text-[var(--white)] mt-4 font-bold text-center py-8">No tienes productos añadidos</p>
                         ) : (
-                            products.slice(0, 4).map((product) => (
-                                <ProductCard
-                                    key={product.id}
-                                    product={product}
-                                    onClick={() => handleProductClick(product)}
-                                    onDelete={() => handleDeleteProduct(product.id)}
-                                />
-                            ))
+                            Array.isArray(products) &&
+                            products.slice(0, 4).map((product) => {
+                                if (!product || !product.id) return null;
+
+                                return (
+                                    <ProductCard
+                                        key={product.id}
+                                        product={product}
+                                        onClick={() => handleProductClick(product)}
+                                        onDelete={() => handleDeleteProduct(product.id)}
+                                    />
+                                );
+                            })
                         )}
                     </div>
                 </div>

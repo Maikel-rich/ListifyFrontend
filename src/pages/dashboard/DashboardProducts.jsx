@@ -277,7 +277,7 @@ export default function DashboardProducts() {
                     <h2 className="text-[var(--white)] font-semibold text-2xl mb-4">Mis productos</h2>
                     <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
                         {loading ? (
-                            [...Array(4)].map((_, i) => <LoadingProductCard key={i} />)
+                            [...Array(3)].map((_, i) => <LoadingProductCard key={i} />)
                         ) : products.length === 0 ? (
                             <p className="text-center text-[var(--white)]">No tienes productos añadidos</p>
                         ) : (
