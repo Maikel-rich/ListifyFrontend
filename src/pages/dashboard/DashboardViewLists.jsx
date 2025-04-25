@@ -2,10 +2,14 @@ import { useEffect, useState } from 'react';
 import { ShoppingListService } from '@/services/shoppingList.service';
 import ListCard from "@/components/ListCard";
 import LoadingListCard from "@/components/LoadingListCard";
+import { useNavigate } from "react-router-dom";
+
 
 export default function DashboardViewLists() {
     const [lists, setLists] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchLists = async () => {
@@ -52,6 +56,7 @@ export default function DashboardViewLists() {
                                 <ListCard
                                     name={list.name}
                                     products={productosPreview}
+                                    onClick={() => navigate(`/dashboard/details/${list.id}`)}
                                 />
                             </div>
                         );
